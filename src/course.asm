@@ -14,20 +14,15 @@
 		buffer_size	db ?
 		buffer_str	db max_len + 1 dup("$")
 
-include d:\macro.asm	
+include d:\table.asm	
 include d:\print.asm
 
 	.code
 start:	mov 	ax, @data
 	mov 	ds, ax
 
-	lea 	dx, buffer
-	get_str
-	newline
-
-	lea	dx, buffer_str
-	println
-
+	debug_box
+	
 	pause
 	exit
 

@@ -1,12 +1,8 @@
 	
 	putchar macro		; puts char from dl
 		push ax
-		push dx
-
 		mov 	ah, 2
 		int	21h
-
-		pop dx
 		pop ax
 	endm
 
