@@ -25,6 +25,8 @@ puts proc	; char from stack
 	ret
 puts endp
 
+;TODO: You need to write docs. What if you will forget about something?...
+
 	.code
 
 start:	mov 	ax, @data
