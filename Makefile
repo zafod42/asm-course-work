@@ -11,6 +11,7 @@ show:
 	cat bin/BUILD.LOG bin/LINK.LOG
 
 bin/COURSE.EXE: src/course.asm src/table.asm src/print.asm
+	mkdir -p bin
 	dosbox 	-c "@echo off"\
 		-c "cls"\
 		-c "mount c $(TASM)"\
