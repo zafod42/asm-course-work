@@ -1,27 +1,34 @@
 
-PWD=~/Documents/programming/asm/course_work
-TASM=~/Documents/DOS_ASM/tasm
+PWD=~/Documents/programming/asm/course_work/
+TASM=~/Documents/DOS_ASM/tasm/
 
 
 all: run
 
-build: COURSE.EXE
+build: bin/COURSE.EXE
 
 show:	
 	cat BUILD.LOG LINK.LOG
 
-COURSE.EXE: course.asm
-	dosbox 	-c "mount c $(TASM)"\
+bin/COURSE.EXE: src/course.asm
+	dosbox 	-c "@echo off"\
+		-c "cls"\
+		-c "mount c $(TASM)"\
 		-c "path=z:\\;c:\\"\
-		-c "mount d $(PWD)"\
-		-c "d:"\
-		-c "tasm course.asm >build.log"\
-		-c "tlink course.obj>link.log"\
+		-c "mount d $(PWD)/src/"\
+		-c "mount e $(PWD)/bin/"\
+		-c "e:"\
+		-c "tasm d:\\course.asm > build.log"\
+		-c "tlink course.obj > link.log"\
 		-c "exit"
 
-run: COURSE.EXE
-	dosbox 	-c "mount d $(PWD)"\
-		-c "d:\\course.exe"
+run: bin/COURSE.EXE
+	dosbox 	-c "@echo off"\
+		-c "mount d $(PWD)/bin"\
+		-c "cls"\
+		-c "d:\\course.exe"\
+		-c "exit"
 
 clean:
-	rm *.MAP *.OBJ *.EXE *.LOG
+	rm bin/*.MAP bin/*.OBJ bin/*.EXE bin/*.LOG
+
