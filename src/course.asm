@@ -21,8 +21,8 @@ include d:\print.asm
 start:	mov 	ax, @data
 	mov 	ds, ax
 
-	debug_box
-	
+	draw_table
+
 	pause
 	exit
 

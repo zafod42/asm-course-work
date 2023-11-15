@@ -50,20 +50,48 @@
 		pop dx	
 	endm
 
+	number_len equ	2
+	surname_len equ 20
+	credit_id_len equ 9
+	credit_len equ 7
+	date equ 10
+
 	draw_top macro
 		pusha	
 		mov 	dl, top_left_corner
 		putchar
-
+		mov 	cx, number_len
+	number:	mov 	dl, horizontal_line
+		putchar	
+		loop number
 		
+		mov 	dl, "*"
+		putchar
+		
+		mov 	cx, surname_len
+	surname:mov	dl, horizontal_line
+		putchar
+		loop surname
+	
+		mov	dl, "*"	
+		putchar	
+		mov 	cx, credit_id_len
+	credit:	mov	dl, horizontal_line
+		putchar
+		loop credit	
+	 
+   		;mov 	dl, "*"
+		;putchar
 		mov 	dl, top_right_corner
 		putchar
 		popa
 	endm
 
+	
+
 	draw_table macro	;TODO: Write docs for it
 		draw_top
-
+		newline
 	endm
 
 
