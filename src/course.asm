@@ -14,16 +14,26 @@
 		buffer_size	db ?
 		buffer_str	db max_len + 1 dup("$")
 
-include d:\table.asm	
 include d:\print.asm
 
+
+include d:\table.asm
+puts proc	; char from stack
+	mov 	ah, 9
+	int 21h
+	newline
+	ret
+puts endp
+
 	.code
+
 start:	mov 	ax, @data
 	mov 	ds, ax
 
 	draw_table
-
 	pause
 	exit
 
 	end start 
+
+
