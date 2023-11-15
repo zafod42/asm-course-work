@@ -8,7 +8,7 @@ all: run
 build: bin/COURSE.EXE
 
 show:	
-	cat BUILD.LOG LINK.LOG
+	cat bin/BUILD.LOG bin/LINK.LOG
 
 bin/COURSE.EXE: src/course.asm
 	dosbox 	-c "@echo off"\
@@ -25,6 +25,7 @@ bin/COURSE.EXE: src/course.asm
 run: bin/COURSE.EXE
 	dosbox 	-c "@echo off"\
 		-c "mount d $(PWD)/bin"\
+		-c "keyb ru441 866"\
 		-c "cls"\
 		-c "d:\\course.exe"\
 		-c "exit"
