@@ -32,7 +32,8 @@ puts endp
 start:	mov 	ax, @data
 	mov 	ds, ax
 
-	draw_table
+
+	call draw_table
 	pause
 	exit
 
