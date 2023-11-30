@@ -38,4 +38,39 @@
 		int 	21h
 		pop ax 	
 	endm
+	
+
+dec_string db "00$"
+	
+	convert_dec proc	; recieves byte operand to print
+		push	bp
+		mov	bp, sp
+		sub	sp, 8	
+		push	ax
+		push	bx	
+		push	di
+		push 	cx
+		mov	ax, [bp + 4]	
+		mov	bl, 10
+		lea	di, dec_string
+		mov	cx, 2
+		add	di, 1
+_convert_dec_loop:
+		div 	bl	
+		mov	bh, ah
+		xor 	ah, ah
+		add	bh, "0"
+		mov	[di], bh
+		dec	di
+		loop  	_convert_dec_loop
+_convert_dec_end:
+		pop 	cx
+		pop 	di
+		pop	bx
+		pop	ax
+		mov	sp, bp
+		pop	bp
+		ret
+	endp
+
 
