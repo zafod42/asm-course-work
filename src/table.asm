@@ -58,7 +58,7 @@
 	surname_len equ 20
 	student_id_len equ 9
 	credit_len equ 9
-	date_len equ 10
+	date_len equ 12
 
 	draw_top proc
 		pusha	
@@ -311,6 +311,7 @@ draw_cell_exit:	popa
 		mov 	dl, vertical_border_line
 		putchar
 		pop 	dx
+
 	endm
 	
 counter db " 1$" 
@@ -350,6 +351,15 @@ counter db " 1$"
 
 	draw_table proc		;TODO: Write docs for it
 		pusha
+	; moving cursor to the begining
+		mov	ah, 00h
+		mov	al, 03h
+		int 	10h
+		;mov	ah, 02h
+		;mov 	bh, 0
+		;mov	dx, 0
+		;int 	10h
+		
 		call 	draw_top
 		newline
 	 	mov 	cx, table_size 

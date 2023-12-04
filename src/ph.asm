@@ -7,7 +7,8 @@ hex_end	   db "h$", "$", "$"
 print_hex proc
 	push	bp
 	mov	bp, sp
-	sub	sp, 6; two bytes in local stack
+	sub	sp, 8; two bytes in local stack
+	push	ax
 	mov	ax, [bp + 4]
 	push 	di
 	lea	di, hex_buffer
@@ -38,6 +39,7 @@ _print_hex_main:
 _print_hex_end:
 	pop 	cx
 	pop 	di
+	pop	ax
 	mov	sp, bp
 	pop 	bp
 	ret
